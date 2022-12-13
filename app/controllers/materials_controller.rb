@@ -1,9 +1,10 @@
 class MaterialsController < ApplicationController
+  before_action :set_category
   before_action :set_material, only: %i[ show edit update destroy ]
 
   # GET /materials or /materials.json
   def index
-    @materials = Material.all
+    @materials = @category.materials.all
   end
 
   # GET /materials/1 or /materials/1.json
@@ -12,7 +13,7 @@ class MaterialsController < ApplicationController
 
   # GET /materials/new
   def new
-    @material = Material.new
+    @material = @category.materials.build
   end
 
   # GET /materials/1/edit
@@ -21,11 +22,11 @@ class MaterialsController < ApplicationController
 
   # POST /materials or /materials.json
   def create
-    @material = Material.new(material_params)
+    @material = @category.materials.build(material_params)
 
     respond_to do |format|
       if @material.save
-        format.html { redirect_to material_url(@material), notice: "Material was successfully created." }
+        format.html { redirect_to [@category, @material], notice: "El material ha sido creado." }
         format.json { render :show, status: :created, location: @material }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class MaterialsController < ApplicationController
   def update
     respond_to do |format|
       if @material.update(material_params)
-        format.html { redirect_to material_url(@material), notice: "Material was successfully updated." }
+        format.html { redirect_to [@category, @material], notice: "El material ha sido actualizado." }
         format.json { render :show, status: :ok, location: @material }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,15 +53,19 @@ class MaterialsController < ApplicationController
     @material.destroy
 
     respond_to do |format|
-      format.html { redirect_to materials_url, notice: "Material was successfully destroyed." }
+      format.html { redirect_to [@category, :materials], notice: "El material se ha eliminado." }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_category
+      @category = Category.find(params[:category_id])
+    end
+    
     def set_material
-      @material = Material.find(params[:id])
+      @material = @category.materials.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

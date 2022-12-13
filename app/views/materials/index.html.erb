@@ -6,9 +6,9 @@
   <% @materials.each do |material| %>
     <%= render material %>
     <p>
-      <%= link_to "Show this material", material %>
+      <%= link_to "Show this material", [@category, material] %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New material", new_material_path %>
+<%= link_to "New material", new_category_material_path(@category) %>

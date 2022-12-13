@@ -5,6 +5,8 @@
 <br>
 
 <div>
-  <%= link_to "Show this material", @material %> |
-  <%= link_to "Back to materials", materials_path %>
+  <%= link_to "Show this material", [@category, @material] %> |
+  <%= link_to "Back to materials", category_materials_path(@category) %> |
+
+  
 </div>
