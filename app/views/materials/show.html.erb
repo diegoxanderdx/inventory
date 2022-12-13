@@ -3,9 +3,9 @@
 <%= render @material %>
 
 <div>
-  <%= link_to "Edit this material", edit_category_material_path(@category, @material) %> |
-  <%= link_to "Back to materials", [@category, :materials] %>
+  <%= link_to "Editar material", edit_category_material_path(@category, @material) %> |
+  <%= link_to "Regresar a materiales", [@category, :materials] %>
 
-  <%= button_to 'Destroy', [@category, @material], method: :delete %>
+  <%= button_to 'Eliminar este material', [@category, @material], method: :delete %>
 
 </div>

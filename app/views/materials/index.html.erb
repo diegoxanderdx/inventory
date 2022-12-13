@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Materials</h1>
+<h1>Materiales</h1>
 
 <div id="materials">
   <% @materials.each do |material| %>
     <%= render material %>
     <p>
-      <%= link_to "Show this material", [@category, material] %>
+      <%= link_to "Mostrar este material", [@category, material] %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New material", new_category_material_path(@category) %>
+<%= link_to "Nuevo material", new_category_material_path(@category) %>

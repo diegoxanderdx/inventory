@@ -3,8 +3,8 @@
 <%= render @variation %>
 
 <div>
-  <%= link_to "Edit this variation", edit_material_variation_path(@material, @variation) %> |
-  <%= link_to "Back to variations", [@material, :variations] %>
+  <%= link_to "Editar esta variacion", edit_material_variation_path(@material, @variation) %> |
+  <%= link_to "Regresar a variacionaes", [@material, :variations] %>
 
-  <%= button_to "Destroy this variation", [@material, @variation], method: :delete %>
+  <%= button_to "Eliminar esta variacion", [@material, @variation], method: :delete %>
 </div>

@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Variations</h1>
+<h1>Variaciones</h1>
 
 <div id="variations">
   <% @variations.each do |variation| %>
     <%= render variation %>
     <p>
-      <%= link_to "Show this variation", [@material, variation] %>
+      <%= link_to "Mostrar esta variacion", [@material, variation] %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New variation", new_material_variation_path(@material) %>
+<%= link_to "Nueva variacion", new_material_variation_path(@material) %>
