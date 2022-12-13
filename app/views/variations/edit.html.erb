@@ -1,0 +1,10 @@
+<h1>Editing variation</h1>
+
+<%= render "form", variation: @variation, material: @material %>
+
+<br>
+
+<div>
+  <%= link_to "Show this variation", [@material, @variation] %> |
+  <%= link_to "Back to variations", material_variations_path(@material) %>
+</div>

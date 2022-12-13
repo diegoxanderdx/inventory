@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @variation %>
+
+<div>
+  <%= link_to "Edit this variation", edit_material_variation_path(@material, @variation) %> |
+  <%= link_to "Back to variations", [@material, :variations] %>
+
+  <%= button_to "Destroy this variation", [@material, @variation], method: :delete %>
+</div>
