@@ -4,7 +4,8 @@
 
 <div>
   <%= link_to "Editar material", edit_category_material_path(@category, @material) %> |
-  <%= link_to "Regresar a materiales", [@category, :materials] %>
+  <%= link_to "Regresar a materiales", [@category, :materials] %> |
+  <%= link_to "Nueva variacion de material", new_material_variation_path(@material) %>
 
   <%= button_to 'Eliminar este material', [@category, @material], method: :delete %>
 
