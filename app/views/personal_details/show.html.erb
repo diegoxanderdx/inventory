@@ -3,8 +3,8 @@
 <%= render @personal_detail %>
 
 <div>
-  <%= link_to "Edit this personal detail", edit_personal_detail_path(@personal_detail) %> |
-  <%= link_to "Back to personal details", personal_details_path %>
+  <%= link_to "Editar datos personales", edit_user_personal_detail_path(@user, @personal_detail) %> |
+  <%= link_to "Regresar a datos personales", [@user, :personal_details] %>
 
-  <%= button_to "Destroy this personal detail", @personal_detail, method: :delete %>
+  <%= button_to "Eliminar datos personales", [@user, @personal_detail], method: :delete %>
 </div>

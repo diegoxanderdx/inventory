@@ -1,14 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Orders</h1>
+<h1>Ordenes de <%= @user.personal_detail.first_name %>/h1>
 
 <div id="orders">
   <% @orders.each do |order| %>
     <%= render order %>
     <p>
-      <%= link_to "Show this order", order %>
+      <%= link_to "Mostrar esta orden", [@user, order] %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New order", new_order_path %>
+<%= link_to "Nueva orden", new_user_order_path(@user) %>

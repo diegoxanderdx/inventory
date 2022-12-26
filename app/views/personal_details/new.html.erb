@@ -1,9 +1,9 @@
-<h1>New personal detail</h1>
+<h1>Nuevos datos personales</h1>
 
-<%= render "form", personal_detail: @personal_detail %>
+<%= render "form", personal_detail: @personal_detail, user: @user %>
 
 <br>
 
 <div>
-  <%= link_to "Back to personal details", personal_details_path %>
+  <%= link_to "Regresar a datos personales", user_personal_details_path(@user) %>
 </div>

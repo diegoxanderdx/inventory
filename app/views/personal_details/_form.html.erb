@@ -1,16 +1,16 @@
 
-<%= simple_form_for(@personal_detail) do |f| %>
+<%= simple_form_for([@user, personal_detail]) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
     <%= f.input :username %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :id_type %>
-    <%= f.input :id_number %>
-    <%= f.input :phone_number %>
-    <%= f.association :user %>
+    <%= f.input :first_name, :label => "Nombre" %>
+    <%= f.input :last_name, :label => "Apellido" %>
+    <%= f.input :id_type, as: :collection_select, collection: [['0', 'Cedula de ciudadania'], ['1', 'Tarjeta de identidad'], ['2', 'Cedula de extranjeria']], label_method: :second, value_method: :first, include_blank: "Selecciona", :label => "Tipo de documento" %>
+    <%= f.input :id_number, :label => "Numero de documento" %>
+    <%= f.input :phone_number, :label => "Numero de contacto" %>
+    <%= f.association :user, selected: @user, as: :hidden%>
   </div>
 
   <div class="form-actions">

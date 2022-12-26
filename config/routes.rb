@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'home/index'
-  resources :orders
-  
+  root to: "home#index"
+
   resources :categories do
     resources :materials
   end
@@ -11,14 +10,12 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [] do
-    resources :personal_details
+    resources :personal_details, except: :index
+    resources :orders
   end
   
-  devise_for :users
-    
+  devise_for :users, controllers: { 
+    confirmations: 'users/confirmations'
+   }
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  root to: "home#index"
 end
