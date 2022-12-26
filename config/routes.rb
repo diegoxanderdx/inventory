@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :personal_details
   
   resources :categories do
     resources :materials
