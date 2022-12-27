@@ -3,12 +3,27 @@
 <h1>Categorias</h1>
 
 <div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Mostar esta categoria", category %>
-    </p>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre de la categoria</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.name %></td>
+          <td>
+            <%= button_to 'Editar', edit_category_path(category), method: :get %>
+            <%= button_to 'Ver Materiales', category_materials_path(category), method: :get %>
+            <%= button_to 'Agregar material', new_category_material_path(category.id), method: :get %>
+            <%= button_to 'Eliminar', category_path(category), form: { data: { turbo_confirm: 'Are you sure?' } }, method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "Nueva categoria", new_category_path %>
+<%= button_to 'Nueva categoria', new_category_path, method: :get %>

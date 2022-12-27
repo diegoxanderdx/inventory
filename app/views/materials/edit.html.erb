@@ -5,8 +5,5 @@
 <br>
 
 <div>
-  <%= link_to "Mostrar material", [@category, @material] %> |
-  <%= link_to "Regresar a materiales", category_materials_path(@category) %> |
-
-  
+  <%= button_to 'Regresar a materiales', category_materials_path(@category), method: :get %> 
 </div>

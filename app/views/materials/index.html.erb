@@ -1,14 +1,30 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Materiales de <%= @category.name %></h1>
+<h1>Lista de <%= @category.name %></h1>
 
 <div id="materials">
-  <% @materials.each do |material| %>
-    <%= render material %>
-    <p>
-      <%= link_to "Mostrar este material", [@category, material] %>
-    </p>
-  <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre del material</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @materials.each do |material| %>
+        <tr>
+          <td><%= material.name %></td>
+          <td><%= button_to 'Editar', edit_category_material_path(@category.id, material), method: :get %>
+            <%= button_to 'Ver variaciones', material_variations_path(material), method: :get %>
+            <%= button_to 'Agregar variacion', new_material_variation_path(material.id), method: :get %>
+            <%= button_to 'Eliminar', category_material_path(@category, material), form: { data: { turbo_confirm: 'Are you sure?' } }, method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "Nuevo material", new_category_material_path(@category) %>
+<%= button_to 'Nuevo material', new_category_material_path(@category), method: :get %>
+
+<%= button_to 'Categorias', categories_path, method: :get %>

@@ -1,10 +1,9 @@
-<h1>Editing category</h1>
+<h1>Editar Categoria</h1>
 
 <%= render "form", category: @category %>
 
 <br>
 
 <div>
-  <%= link_to "Mostrar esta categoria", @category %> |
-  <%= link_to "Regresar a categorias", categories_path %>
+  <%= button_to 'Regresar a categorias', categories_path, method: :get %>
 </div>

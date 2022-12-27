@@ -3,12 +3,37 @@
 <h1>Variaciones para <%= @material.name %></h1>
 
 <div id="variations">
-  <% @variations.each do |variation| %>
-    <%= render variation %>
-    <p>
-      <%= link_to "Mostrar esta variacion", [@material, variation] %>
-    </p>
-  <% end %>
+  <table>
+      <thead>
+        <tr>
+          <th>Color</th>
+          <th>Tamaño</th>
+          <th>Unidad de medida</th>
+          <th>Cantidad inicial</th>
+          <th>Cantidad disponible</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <% @variations.each do |variation| %>
+          <tr>
+            <td><%= variation.color %></td>
+            <td><%= variation.size %></td>
+            <td><%= variation.unit_of_measurement %></td>
+            <td><%= variation.total_qtty %></td>
+            <td><%= variation.remaining_qtty %></td>
+            <td><%= variation.price %></td>
+            <td>
+              <%= button_to 'Editar', edit_material_variation_path(@material.id, variation), method: :get %>
+              <%= button_to 'Eliminar', material_variation_path(@material, variation), form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
 
-<%= link_to "Nueva variacion", new_material_variation_path(@material) %>
+<%= button_to 'Nueva variacion', new_material_variation_path(@material), method: :get %>
+<%= button_to 'Categorias', categories_path, method: :get %>

@@ -26,7 +26,7 @@ class VariationsController < ApplicationController
 
     respond_to do |format|
       if @variation.save
-        format.html { redirect_to [@material, @variation], notice: "Variation was successfully created." }
+        format.html { redirect_to material_variations_path, notice: "La variacion de material se ha creado exitosamente." }
         format.json { render :show, status: :created, location: @variation }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class VariationsController < ApplicationController
   def update
     respond_to do |format|
       if @variation.update(variation_params)
-        format.html { redirect_to [@material, @variation], notice: "Variation was successfully updated." }
+        format.html { redirect_to material_variations_path, notice: "La variacion de material se ha actualizado." }
         format.json { render :show, status: :ok, location: @variation }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class VariationsController < ApplicationController
     @variation.destroy
 
     respond_to do |format|
-      format.html { redirect_to [@material, :variations], notice: "Variation was successfully destroyed." }
+      format.html { redirect_to [@material, :variations], notice: "La variacion de material se ha eliminado exitosamente." }
       format.json { head :no_content }
     end
   end

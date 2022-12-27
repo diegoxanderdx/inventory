@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root to: "home#index"
+  resources :categories, except: :show
 
-  resources :categories do
-    resources :materials
+  resources :categories, only: [] do
+    resources :materials, except: :show
   end
 
   resources :materials, only: [] do
-    resources :variations
+    resources :variations, except: :show
   end
 
   resources :users, only: [] do

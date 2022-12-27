@@ -9,6 +9,7 @@ class MaterialsController < ApplicationController
 
   # GET /materials/1 or /materials/1.json
   def show
+    #@material = @category.Material.find(params[:id])
   end
 
   # GET /materials/new
@@ -26,7 +27,7 @@ class MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.save
-        format.html { redirect_to [@category, @material], notice: "El material ha sido creado." }
+        format.html { redirect_to category_materials_path, notice: "El material ha sido creado." }
         format.json { render :show, status: :created, location: @material }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +40,7 @@ class MaterialsController < ApplicationController
   def update
     respond_to do |format|
       if @material.update(material_params)
-        format.html { redirect_to [@category, @material], notice: "El material ha sido actualizado." }
+        format.html { redirect_to category_materials_path, notice: "El material ha sido actualizado." }
         format.json { render :show, status: :ok, location: @material }
       else
         format.html { render :edit, status: :unprocessable_entity }
