@@ -7,13 +7,13 @@
     <%= f.input :username %>
     <%= f.input :first_name, :label => "Nombre" %>
     <%= f.input :last_name, :label => "Apellido" %>
-    <%= f.input :id_type, as: :collection_select, collection: [['0', 'Cedula de ciudadania'], ['1', 'Tarjeta de identidad'], ['2', 'Cedula de extranjeria']], label_method: :second, value_method: :first, include_blank: "Selecciona", :label => "Tipo de documento" %>
+    <%= f.input :id_type, as: :collection_select, collection: PersonalDetail.id_types.keys, include_blank: "Selecciona", :label => "Tipo de documento" %>
     <%= f.input :id_number, :label => "Numero de documento" %>
     <%= f.input :phone_number, :label => "Numero de contacto" %>
     <%= f.association :user, selected: @user, as: :hidden%>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Enviar' %>
   </div>
 <% end %>

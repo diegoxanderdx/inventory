@@ -4,9 +4,9 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :color, :label => 'Color' %>
-    <%= f.input :size, :label => 'Tamaño' %>
-    <%= f.input :unit_of_measurement, :label => 'Unidad de medida' %>
+    <%= f.input :color, as: :collection_select, collection: Variation.colors.keys, include_blank: "Selecciona",:label => 'Color' %>
+    <%= f.input :size, :label => 'Tamaño o calibre' %>
+    <%= f.input :unit_of_measurement, as: :collection_select, collection: Variation.unit_of_measurements.keys, include_blank: "Selecciona", :label => 'Unidad de medida' %>
     <%= f.input :total_qtty, :label => 'Cantidad Inicial' %>
     <%= f.input :remaining_qtty, :label => 'Cantidad disponible' %>
     <%= f.input :price, :label => 'Precio' %>

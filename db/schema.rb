@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_26_133936) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_27_170646) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_133936) do
     t.string "product_name", null: false
     t.integer "quantity", null: false
     t.integer "group_id", null: false
-    t.string "material", null: false
+    t.text "material", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_133936) do
     t.string "username", null: false
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "id_type"
+    t.integer "id_type"
     t.string "id_number"
     t.string "phone_number", null: false
     t.bigint "user_id", null: false
@@ -78,9 +78,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_133936) do
   end
 
   create_table "variations", force: :cascade do |t|
-    t.string "color", null: false
+    t.integer "color", null: false
     t.string "size", null: false
-    t.string "unit_of_measurement"
+    t.integer "unit_of_measurement"
     t.integer "total_qtty", null: false
     t.integer "remaining_qtty"
     t.integer "price"
